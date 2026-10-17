@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rio Beach Safe · CBMERJ</title>
+  <meta name="description" content="Projeto Rio Beach Safe – Corpo de Bombeiros Militar do Estado do Rio de Janeiro. Informação, prevenção e segurança para todos nas praias do Rio, em 12 idiomas.">
+  <meta name="theme-color" content="#5c0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rio Beach Safe">
+  <meta property="og:title" content="Rio Beach Safe · CBMERJ">
+  <meta property="og:description" content="Informação que salva vidas! Segurança nas praias do Rio de Janeiro em 12 idiomas.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-watermark" aria-hidden="true"></div>
+
+  <main id="app" class="app" aria-live="polite"></main>
+
+  <!-- Botão flutuante de emergência: 193 -->
+  <a id="sos" class="sos" href="tel:193" aria-label="193 – Corpo de Bombeiros">
+    <span class="sos-icon">📞</span><span class="sos-num">193</span>
+  </a>
+
+  <!-- VLibras – tradutor oficial para Língua Brasileira de Sinais (gov.br) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer onload="window.VLibras && new window.VLibras.Widget('https://vlibras.gov.br/app')"></script>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
