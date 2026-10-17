@@ -276,7 +276,13 @@
     if (bar) bar.hidden = !show;
   }
   function watchLibrasRoot(root) {
-    const sync = () => librasBar(root.dataset.active === 'true');
+    const sync = () => {
+      const active = root.dataset.active === 'true';
+      // O VLibras lembra que estava aberto e reabre sozinho na próxima visita;
+      // fora do português (ou na tela de idiomas) isso não faz sentido: fecha.
+      if (active && (lang !== 'pt' || document.body.classList.contains('on-lang'))) { closeVLibras(); return; }
+      librasBar(active);
+    };
     new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-active'] });
     sync();
   }
