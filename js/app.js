@@ -230,9 +230,13 @@
     window.scrollTo(0, 0);
     if (r === 'lang') {
       const more = document.getElementById('more-langs'), others = document.getElementById('others');
-      more.addEventListener('click', () => { const open = others.hidden; others.hidden = !open; more.setAttribute('aria-expanded', String(open)); });
+      const toggle = () => { const open = others.hidden; others.hidden = !open; more.setAttribute('aria-expanded', String(open)); };
+      more.addEventListener('click', toggle);
+      if (query.get('more') === '1') toggle();
     }
   }
+  // Parâmetros opcionais na URL: ?lang=xx (idioma), ?libras=1 (abre o VLibras), ?more=1 (expande outros idiomas)
+  const query = new URLSearchParams(location.search);
 
   app.addEventListener('click', ev => {
     const el = ev.target.closest('[data-lang], [data-go]');
@@ -251,8 +255,42 @@
     else if (w && w.initBtn) w.initBtn.click();
   }
 
+  /* Barra "Fechar Libras": o painel do VLibras cobre parte da tela no celular e
+     seu próprio X fica difícil de achar. Quando o painel abre, mostramos uma barra
+     fixa no topo com um X grande que fecha o painel e devolve a leitura normal. */
+  function closeVLibras() {
+    const root = document.getElementById('vlibras-app-root');
+    if (root) root.dataset.active = 'false';
+  }
+  function librasBar(show) {
+    let bar = document.getElementById('libras-bar');
+    if (show && !bar) {
+      bar = document.createElement('div');
+      bar.id = 'libras-bar';
+      bar.className = 'libras-bar';
+      bar.innerHTML = `<span>🤟 Libras</span><button type="button" aria-label="Fechar Libras">✕ Fechar</button>`;
+      bar.querySelector('button').addEventListener('click', closeVLibras);
+      document.body.appendChild(bar);
+    }
+    document.body.classList.toggle('libras-on', !!show);
+    if (bar) bar.hidden = !show;
+  }
+  function watchLibrasRoot(root) {
+    const sync = () => librasBar(root.dataset.active === 'true');
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-active'] });
+    sync();
+  }
+  new MutationObserver(() => {
+    const root = document.getElementById('vlibras-app-root');
+    if (root && !root.dataset.rbsWatched) { root.dataset.rbsWatched = '1'; watchLibrasRoot(root); }
+  }).observe(document.body, { childList: true });
+
   window.addEventListener('hashchange', route);
   route();
+  if (query.get('libras') === '1' && lang === 'pt') {
+    const tryOpen = (n) => { if (window.VLibrasWidget && window.VLibrasWidget.open) openVLibras(); else if (n > 0) setTimeout(() => tryOpen(n - 1), 300); };
+    window.addEventListener('load', () => tryOpen(20));
+  }
 
   /* ── PWA ────────────────────────────────────────────────── */
   if ('serviceWorker' in navigator && location.protocol === 'https:') {

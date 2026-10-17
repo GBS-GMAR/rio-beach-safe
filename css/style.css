@@ -25,6 +25,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -199,6 +200,21 @@ h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-sp
 .sos-icon { font-size: 18px; }
 body.on-emergency .sos, body.on-lang .sos { display: none; }
 @keyframes pulse { 0%,100% { box-shadow: 0 8px 20px rgba(0,0,0,.5), 0 0 0 0 rgba(245,197,24,.55); } 50% { box-shadow: 0 8px 20px rgba(0,0,0,.5), 0 0 0 12px rgba(245,197,24,0); } }
+
+/* ── barra "Fechar Libras" (aparece com o painel do VLibras aberto) ── */
+.libras-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 2147483647;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: calc(8px + env(safe-area-inset-top)) 14px 8px;
+  background: #0f4ea8; color: #fff; font-family: var(--font-head); font-size: 17px; text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0,0,0,.45);
+}
+.libras-bar button {
+  border: 2px solid #fff; background: #fff; color: #0f4ea8; border-radius: 999px; padding: 6px 16px;
+  font-family: var(--font-head); font-weight: 700; font-size: 17px; text-transform: uppercase; cursor: pointer;
+}
+.libras-bar button:active { background: #e6efff; }
+body.libras-on .app { padding-top: calc(60px + env(safe-area-inset-top)); }
 
 /* ── RTL ─────────────────────────────────────────────────── */
 [dir="rtl"] .lang-btn, [dir="rtl"] .menu-item { text-align: right; }
