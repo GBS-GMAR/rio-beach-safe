@@ -200,9 +200,6 @@ h1, h2, h3 { font-family: var(--font-head); text-transform: uppercase; letter-sp
 body.on-emergency .sos, body.on-lang .sos { display: none; }
 @keyframes pulse { 0%,100% { box-shadow: 0 8px 20px rgba(0,0,0,.5), 0 0 0 0 rgba(245,197,24,.55); } 50% { box-shadow: 0 8px 20px rgba(0,0,0,.5), 0 0 0 12px rgba(245,197,24,0); } }
 
-/* ── VLibras: só aparece com conteúdo em português ──────── */
-[vw-access-button] { bottom: 90px !important; right: 12px !important; }
-
 /* ── RTL ─────────────────────────────────────────────────── */
 [dir="rtl"] .lang-btn, [dir="rtl"] .menu-item { text-align: right; }
 [dir="rtl"] .screen-head { direction: ltr; }

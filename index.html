@@ -31,14 +31,10 @@
     <span class="sos-icon">📞</span><span class="sos-num">193</span>
   </a>
 
-  <!-- VLibras – tradutor oficial para Língua Brasileira de Sinais (gov.br) -->
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer onload="window.VLibras && new window.VLibras.Widget('https://vlibras.gov.br/app')"></script>
+  <!-- VLibras – tradutor oficial para Língua Brasileira de Sinais (gov.br).
+       A versão atual do plugin (7.x) cria sozinha o botão #vlibras-access-wrapper;
+       o app.js mostra esse botão apenas quando o conteúdo está em português. -->
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 
   <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>

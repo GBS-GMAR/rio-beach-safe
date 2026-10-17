@@ -34,10 +34,20 @@
     document.documentElement.dir = meta.rtl ? 'rtl' : 'ltr';
     document.body.className = document.body.className.replace(/\blang-\w+\b/g, '').trim();
     document.body.classList.add('lang-' + (lang || 'pt'));
-    // VLibras só traduz português: esconde o widget nos demais idiomas
-    const showVw = lang === 'pt' && !document.body.classList.contains('on-lang');
-    document.querySelectorAll('[vw], [vw-access-button], .vw-plugin-wrapper').forEach(el => { el.style.display = showVw ? '' : 'none'; });
+    syncVLibras();
   }
+  // VLibras só traduz português: mostra o botão do widget apenas nesse idioma
+  // (e nunca na tela de escolha de idioma, que já tem o botão "Libras").
+  function syncVLibras() {
+    const w = document.getElementById('vlibras-access-wrapper');
+    if (!w) return;
+    const show = lang === 'pt' && !document.body.classList.contains('on-lang');
+    w.style.display = show ? '' : 'none';
+  }
+  // O plugin injeta o botão depois do carregamento: observa o body até ele aparecer
+  new MutationObserver((muts, obs) => {
+    if (document.getElementById('vlibras-access-wrapper')) { syncVLibras(); obs.disconnect(); }
+  }).observe(document.body, { childList: true });
   const t = () => window.I18N[lang] || window.I18N.pt;
 
   /* ── helpers ────────────────────────────────────────────── */
@@ -236,8 +246,9 @@
   });
 
   function openVLibras() {
-    const b = document.querySelector('[vw-access-button]');
-    if (b) b.click();
+    const w = window.VLibrasWidget;
+    if (w && typeof w.open === 'function') w.open();
+    else if (w && w.initBtn) w.initBtn.click();
   }
 
   window.addEventListener('hashchange', route);
