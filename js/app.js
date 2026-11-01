@@ -289,7 +289,9 @@
   let pendingScroll = null;
   function route() {
     let r = (location.hash.replace(/^#\/?/, '') || '').split('?')[0];
-    if (!ROUTES.includes(r)) r = lang ? 'menu' : 'lang';
+    // Entrada sem tela definida (leitura do QR Code): sempre a tela de idiomas.
+    // Só vai direto ao menu quando o link já traz o idioma (?lang=en, QR de hotel).
+    if (!ROUTES.includes(r)) r = langFromUrl() ? 'menu' : 'lang';
     if (!lang && r !== 'lang') r = 'lang';
     if (r === 'flags' || r === 'rip') { pendingScroll = r === 'flags' ? 'sec-flags' : 'sec-rip'; r = 'drowning'; }
     document.body.classList.toggle('on-emergency', r === 'emergency' || r === 'menu');
