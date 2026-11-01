@@ -9,7 +9,7 @@
     android: 'https://play.google.com/store/apps/details?id=br.gov.rj.cbmerj.rj193android&hl=pt_BR',
     ios: 'https://apps.apple.com/br/app/193rj/id6742510233'
   };
-  const ROUTES = ['lang', 'menu', 'flags', 'rip', 'health', 'kids', 'emergency'];
+  const ROUTES = ['lang', 'menu', 'drowning', 'flags', 'rip', 'health', 'kids', 'emergency'];
   const app = document.getElementById('app');
 
   /* ── idioma ─────────────────────────────────────────────── */
@@ -49,6 +49,15 @@
     if (document.getElementById('vlibras-access-wrapper')) { syncVLibras(); obs.disconnect(); }
   }).observe(document.body, { childList: true });
   const t = () => window.I18N[lang] || window.I18N.pt;
+  // Texto com reserva: idioma atual → inglês → português (para chaves novas ainda não traduzidas)
+  const tx = path => {
+    for (const code of [lang, 'en', 'pt']) {
+      let v = window.I18N[code];
+      for (const k of path.split('.')) v = v && v[k];
+      if (v != null) return v;
+    }
+    return '';
+  };
 
   /* ── helpers ────────────────────────────────────────────── */
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -61,6 +70,8 @@
     wave: '<svg viewBox="0 0 24 24"><path d="M2 12c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/><path d="M2 17c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/><path d="M2 7c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg>',
     sun: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     kids: '<svg viewBox="0 0 24 24"><circle cx="8" cy="6" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3 21v-5a5 5 0 0 1 10 0v5"/><path d="M14 21v-4a3.5 3.5 0 0 1 7 0v4"/></svg>',
+    lifebuoy: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg>',
+    phone: '<svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
     siren: '<svg viewBox="0 0 24 24"><path d="M6 20V13a6 6 0 0 1 12 0v7"/><path d="M3 20h18"/><path d="M12 3v2M4.5 6.5l1.5 1.5M19.5 6.5L18 8"/></svg>'
   };
 
@@ -70,7 +81,7 @@
     return `
       <header class="screen-head">
         <button class="icon-btn" data-go="${opts.back || 'menu'}" aria-label="${esc(u.back)}">${ICONS.back}</button>
-        <img class="logo-sm" src="assets/img/logo-projeto-rio-beach-safe.webp" alt="Projeto Rio Beach Safe">
+        <div class="cb-mini"><img src="assets/img/boia-rio-beach-safe.webp" alt="Rio Beach Safe"><span>CORPO DE<b>BOMBEIROS</b>MILITAR - RJ</span></div>
         <button class="icon-btn lang-chip" data-go="lang" aria-label="${esc(u.changeLang)}" title="${esc(u.changeLang)}">${meta.flag || '🌐'}</button>
       </header>`;
   }
@@ -87,19 +98,29 @@
   /* ── telas ──────────────────────────────────────────────── */
   function screenLang() {
     const u = (window.I18N[lang] || window.I18N.pt).ui;
-    const main = window.LANGS.filter(l => l.main);
-    const others = window.LANGS.filter(l => !l.main);
-    const btn = l => `<button class="lang-btn" data-lang="${l.code}" lang="${l.code}"><span class="flag">${l.flag}</span>${esc(l.name)}</button>`;
+    const pt = window.LANGS.find(l => l.code === 'pt');
+    const en = window.LANGS.find(l => l.code === 'en');
+    const others = window.LANGS.filter(l => l.code !== 'pt' && l.code !== 'en');
+    const btn = l => `<button class="lang-btn" data-lang="${l.code}" lang="${l.code}"><span class="flag">${l.flag}</span><span class="lname">${esc(l.name)}<small lang="pt">${esc(l.country || '')}</small></span></button>`;
     return `
       <section class="hero">
-        <img class="logo" src="assets/img/logo-projeto-rio-beach-safe.webp" alt="Projeto Rio Beach Safe">
-        <img class="boia" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="">
-        <p class="tagline">${esc(u.tagline)}</p>
-        <p class="choose">${esc(u.chooseLang)}</p>
+        <div class="cb-head">
+          <img src="assets/img/brasao-cbmerj.webp" alt="Brasão do CBMERJ">
+          <div><span class="l1">CORPO DE</span><span class="l2">BOMBEIROS</span><span class="l3">MILITAR - RJ</span></div>
+        </div>
+        <img class="boia-hero" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="Rio Beach Safe – Corpo de Bombeiros Militar do Estado do Rio de Janeiro">
+        <div class="lines-title"><span>APROVEITE A PRAIA</span><b>COM SEGURANÇA</b></div>
+        <p class="tagline-qr">Acesso rápido às orientações de segurança na praia</p>
         <div class="lang-grid">
-          ${main.map(btn).join('')}
-          <button class="lang-btn wide libras" data-lang="libras"><span class="flag">🤟</span><span>${esc(u.libras)}<small>${esc(u.librasHint)}</small></span></button>
-          <button class="lang-btn wide more" id="more-langs" aria-expanded="false"><span class="flag">🌐</span>${esc(u.otherLangs)} ▾</button>
+          <div class="pt-card">
+            <button class="lang-btn pt-main" data-lang="pt" lang="pt"><span class="flag">${pt.flag}</span>${esc(pt.name)}</button>
+            <button class="libras-pill" data-lang="libras" lang="pt"><span>🤟</span>Libras</button>
+          </div>
+          <button class="lang-btn wide en-main" data-lang="en" lang="en"><span class="flag">${en.flag}</span>${esc(en.name)}</button>
+          <button class="lang-btn wide more choose-btn" id="more-langs" aria-expanded="false" lang="pt">
+            <span class="flag">🌐</span>
+            <span>Escolha o seu idioma ▾<small>Mais ${others.length} idiomas</small></span>
+          </button>
         </div>
         <div class="lang-grid others" id="others" hidden>${others.map(btn).join('')}</div>
       </section>
@@ -109,23 +130,69 @@
   }
 
   function screenMenu() {
-    const m = t().menu, u = t().ui;
-    const item = (r, color, icon, d) => `
-      <button class="menu-item" data-go="${r}">
-        <span class="ico ${color}">${icon}</span>
-        <span class="txt"><b>${esc(d.title)}</b><span>${esc(d.sub)}</span></span>
-        <span class="chev">›</span>
+    const u = t().ui;
+    const tile = (r, color, icon, title) => `
+      <button class="tile ${color}" data-go="${r}">
+        <span class="tile-ico">${icon}</span>
+        <b>${esc(title)}</b>
       </button>`;
     return `
       ${head({ back: 'lang' })}
-      <h1 class="title">${esc(u.menuTitle)}</h1>
-      <nav class="menu">
-        ${item('flags', 'red', ICONS.flag, m.flags)}
-        ${item('rip', 'blue', ICONS.wave, m.rip)}
-        ${item('health', 'orange', ICONS.sun, m.health)}
-        ${item('kids', 'purple', ICONS.kids, m.kids)}
-        ${item('emergency', 'dark', ICONS.siren, m.emergency)}
+      <button class="hero-tile" data-go="drowning">
+        <img src="assets/img/boia-rio-beach-safe.webp" alt="">
+        <span class="hero-txt">
+          <b>${esc(tx('menu.drowning.title'))}</b>
+          <span>${esc(tx('menu.drowning.sub'))}</span>
+        </span>
+        <span class="hero-cta">${esc(tx('menu.drowning.cta'))} ›</span>
+      </button>
+      <div class="tile-grid">
+        ${tile('health', 'orange', ICONS.sun, tx('menu.health.title'))}
+        ${tile('kids', 'purple', ICONS.kids, tx('menu.kids.title'))}
+      </div>
+      <a class="call193" href="tel:193">
+        <span class="call-ico">${ICONS.phone}</span>
+        <span class="call-num">193</span>
+        <span class="call-txt"><b>${esc(tx('menu.call193.title'))}</b><span>${esc(tx('menu.call193.sub'))}</span></span>
+      </a>
+      <a class="app193" href="${appStoreLink()}" target="_blank" rel="noopener">📲 ${esc(u.install193)}</a>
+      ${footer()}`;
+  }
+
+  function appStoreLink() {
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    return /Android/i.test(ua) ? LINKS.android : (isIOS ? LINKS.ios : LINKS.android);
+  }
+
+  /* Prevenção de afogamento = bandeiras + correntes de retorno numa tela só */
+  function screenDrowning() {
+    const f = t().flags, r = t().rip;
+    const row = (file, color, d) => `
+      <div class="flag-row">
+        <img src="assets/img/bandeira-${file}.webp" alt="${esc(d.name)}">
+        <div><h3>${esc(d.name)}</h3><ul class="bullets">${d.items.map(i => `<li><span class="dot ${color}"></span>${esc(i)}</li>`).join('')}</ul></div>
+      </div>`;
+    const img = ['pt', 'es', 'en'].includes(lang) ? lang : 'en';
+    const emojis = ['🚩', '🏊', '🙋', '🌊'];
+    return `
+      ${head({})}
+      <h1 class="title">${esc(tx('menu.drowning.title'))}</h1>
+      <nav class="chips">
+        <a href="#sec-flags" data-scroll="sec-flags">🚩 ${esc(f.title)}</a>
+        <a href="#sec-rip" data-scroll="sec-rip">🌊 ${esc(r.title)}</a>
       </nav>
+      <h2 class="sec-title" id="sec-flags">${esc(f.title)}</h2>
+      <div class="panel">
+        ${row('vermelha', 'red', f.red)}
+        ${row('amarela', 'yellow', f.yellow)}
+        ${row('verde', 'green', f.green)}
+        ${row('roxa', 'purple', f.purple)}
+      </div>
+      <div class="panel attention">⚠️ <b>${esc(f.attention)}</b> ${esc(f.attentionText)}</div>
+      <h2 class="sec-title" id="sec-rip">${esc(r.title)}</h2>
+      <div class="rip-img"><img src="assets/img/corrente-de-retorno-${img}.jpg" alt="${esc(r.title)}"></div>
+      <div class="panel"><ul class="bullets">${r.items.map((i, k) => `<li><span class="emoji">${emojis[k]}</span>${esc(i)}</li>`).join('')}</ul></div>
       ${footer()}`;
   }
 
@@ -183,11 +250,12 @@
       <div class="panel wrist">
         <img src="assets/img/pulseira-identificacao.webp" alt="${esc(k.wristTitle)}">
         <div>
-          <div class="panel-title">${esc(k.wristTitle)}</div>
-          <p style="margin:0;font-size:15px;line-height:1.4">${esc(k.wristText)}</p>
+          <div class="panel-title">${esc(tx('kids.suggestTitle') || k.wristTitle)}</div>
+          <p style="margin:0;font-size:15px;line-height:1.4">${esc(tx('kids.suggestText') || k.wristText)}</p>
           <ul class="wrist-fields">${k.wristFields.map(f => `<li>👤 ${esc(f)}</li>`).join('')}</ul>
         </div>
       </div>
+      <div class="panel notice">ℹ️ ${esc(tx('kids.notProvided'))}</div>
       <div class="panel"><ul class="bullets">${k.items.map(i => `<li><span class="dot blue"></span>${esc(i)}</li>`).join('')}</ul></div>
       ${footer()}`;
   }
@@ -218,16 +286,19 @@
   }
 
   /* ── router ─────────────────────────────────────────────── */
+  let pendingScroll = null;
   function route() {
     let r = (location.hash.replace(/^#\/?/, '') || '').split('?')[0];
     if (!ROUTES.includes(r)) r = lang ? 'menu' : 'lang';
     if (!lang && r !== 'lang') r = 'lang';
-    document.body.classList.toggle('on-emergency', r === 'emergency');
+    if (r === 'flags' || r === 'rip') { pendingScroll = r === 'flags' ? 'sec-flags' : 'sec-rip'; r = 'drowning'; }
+    document.body.classList.toggle('on-emergency', r === 'emergency' || r === 'menu');
     document.body.classList.toggle('on-lang', r === 'lang');
     applyLangAttrs();
-    const screens = { lang: screenLang, menu: screenMenu, flags: screenFlags, rip: screenRip, health: screenHealth, kids: screenKids, emergency: screenEmergency };
+    const screens = { lang: screenLang, menu: screenMenu, drowning: screenDrowning, flags: screenFlags, rip: screenRip, health: screenHealth, kids: screenKids, emergency: screenEmergency };
     app.innerHTML = screens[r]();
     window.scrollTo(0, 0);
+    if (pendingScroll) { const el = document.getElementById(pendingScroll); pendingScroll = null; if (el) el.scrollIntoView(); }
     if (r === 'lang') {
       const more = document.getElementById('more-langs'), others = document.getElementById('others');
       const toggle = () => { const open = others.hidden; others.hidden = !open; more.setAttribute('aria-expanded', String(open)); };
@@ -239,6 +310,8 @@
   const query = new URLSearchParams(location.search);
 
   app.addEventListener('click', ev => {
+    const sc = ev.target.closest('[data-scroll]');
+    if (sc) { ev.preventDefault(); const el = document.getElementById(sc.dataset.scroll); if (el) el.scrollIntoView({ behavior: 'smooth' }); return; }
     const el = ev.target.closest('[data-lang], [data-go]');
     if (!el) return;
     if (el.dataset.lang) {
@@ -299,7 +372,12 @@
   }
 
   /* ── PWA ────────────────────────────────────────────────── */
-  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  const PREVIEW = /\/previa\//.test(location.pathname);
+  if (PREVIEW) {
+    const tag = document.createElement('div'); tag.className = 'preview-tag';
+    tag.textContent = 'PRÉVIA PARA APROVAÇÃO · não é a versão oficial'; document.body.prepend(tag);
+  }
+  if (!PREVIEW && 'serviceWorker' in navigator && location.protocol === 'https:') {
     window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
   }
 })();

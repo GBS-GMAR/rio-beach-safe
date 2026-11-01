@@ -2,18 +2,18 @@
    PT, ES e EN seguem exatamente as telas aprovadas pelo CBMERJ.
    Os demais idiomas foram traduzidos a partir delas. */
 window.LANGS = [
-  { code: 'pt', name: 'Português', flag: '🇧🇷', main: true },
-  { code: 'es', name: 'Español', flag: '🇪🇸', main: true },
-  { code: 'en', name: 'English', flag: '🇬🇧', main: true },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪', main: true },
-  { code: 'fr', name: 'Français', flag: '🇫🇷', main: true },
-  { code: 'zh', name: '中文', flag: '🇨🇳', main: true },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦', rtl: true },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' }
+  { code: 'pt', name: 'Português', flag: '🇧🇷', country: 'Brasil', main: true },
+  { code: 'es', name: 'Español', flag: '🇪🇸', country: 'Espanha', main: true },
+  { code: 'en', name: 'English', flag: '🇬🇧', country: 'Reino Unido', main: true },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪', country: 'Alemanha', main: true },
+  { code: 'fr', name: 'Français', flag: '🇫🇷', country: 'França', main: true },
+  { code: 'zh', name: '中文', flag: '🇨🇳', country: 'China', main: true },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹', country: 'Itália' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵', country: 'Japão' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦', country: 'Arábia Saudita', rtl: true },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺', country: 'Rússia' },
+  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳', country: 'Índia' },
+  { code: 'ko', name: '한국어', flag: '🇰🇷', country: 'Coreia do Sul' }
 ];
 
 window.I18N = {
@@ -40,9 +40,11 @@ pt: {
     share: 'Compartilhar'
   },
   menu: {
+    drowning: { title: 'Prevenção de afogamento', sub: 'Bandeiras de sinalização e correntes de retorno', cta: 'Saiba mais' },
+    call193: { title: 'Emergência? Ligue 193', sub: 'Corpo de Bombeiros · toque para ligar' },
     flags: { title: 'Bandeiras de sinalização', sub: 'O que cada cor significa' },
     rip: { title: 'Correntes de retorno', sub: 'Como reconhecer e como sair' },
-    health: { title: 'Saúde e bem-estar', sub: 'Cuidados em ambientes quentes' },
+    health: { title: 'Cuidados com a saúde', sub: 'Cuidados em ambientes quentes' },
     kids: { title: 'Segurança infantil', sub: 'Pulseira de identificação e cuidados' },
     emergency: { title: 'Emergência', sub: 'Números importantes e app 193RJ' }
   },
@@ -73,6 +75,9 @@ pt: {
     gear: { title: 'Use acessórios de proteção', text: 'Utilize chapéu, boné, óculos de sol e roupas com proteção UV.' }
   },
   kids: {
+    suggestTitle: 'Sugestão: pulseira de identificação',
+    suggestText: 'Sugerimos que a criança use uma pulseira com o nome e o telefone do responsável e um ponto de referência. Uma ação simples que facilita a identificação e o contato rápido com o responsável.',
+    notProvided: 'O Corpo de Bombeiros não fornece a pulseira de identificação: apenas sugere o seu uso.',
     wristTitle: 'Pulseira de identificação',
     wristText: 'Uma ação simples que facilita a identificação e o contato rápido com o responsável.',
     wristFields: ['Nome do responsável', 'Tel. de contato', 'Localização / referência'],
@@ -119,9 +124,11 @@ es: {
     share: 'Compartir'
   },
   menu: {
+    drowning: { title: 'Prevención de ahogamiento', sub: 'Banderas de señalización y corrientes de retorno', cta: 'Más información' },
+    call193: { title: '¿Emergencia? Llame al 193', sub: 'Cuerpo de Bomberos · toque para llamar' },
     flags: { title: 'Banderas de señalización', sub: 'Qué significa cada color' },
     rip: { title: 'Corrientes de retorno', sub: 'Cómo reconocerlas y cómo salir' },
-    health: { title: 'Salud y bienestar', sub: 'Cuidados en ambientes calurosos' },
+    health: { title: 'Cuidados con la salud', sub: 'Cuidados en ambientes calurosos' },
     kids: { title: 'Seguridad infantil', sub: 'Pulsera de identificación y cuidados' },
     emergency: { title: 'Emergencia', sub: 'Números importantes y app 193RJ' }
   },
@@ -152,6 +159,9 @@ es: {
     gear: { title: 'Usa accesorios de protección', text: 'Utiliza sombrero, gorra, gafas de sol y ropa con protección UV.' }
   },
   kids: {
+    suggestTitle: 'Sugerencia: pulsera de identificación',
+    suggestText: 'Sugerimos que el niño use una pulsera con el nombre y el teléfono del responsable y un punto de referencia. Una acción sencilla que facilita la identificación y el contacto rápido con el responsable.',
+    notProvided: 'El Cuerpo de Bomberos no proporciona la pulsera de identificación: solo sugiere su uso.',
     wristTitle: 'Pulsera de identificación',
     wristText: 'Una acción sencilla que facilita la identificación y el contacto rápido con el responsable.',
     wristFields: ['Nombre del responsable', 'Tel. de contacto', 'Ubicación / referencia'],
@@ -198,9 +208,11 @@ en: {
     share: 'Share'
   },
   menu: {
+    drowning: { title: 'Drowning prevention', sub: 'Warning flags and rip currents', cta: 'Learn more' },
+    call193: { title: 'Emergency? Call 193', sub: 'Fire Department · tap to call' },
     flags: { title: 'Warning flags', sub: 'What each colour means' },
     rip: { title: 'Rip currents', sub: 'How to spot one and how to escape' },
-    health: { title: 'Health and well-being', sub: 'Care in hot environments' },
+    health: { title: 'Health care', sub: 'Care in hot environments' },
     kids: { title: 'Child safety', sub: 'Identification wristband and tips' },
     emergency: { title: 'Emergency', sub: 'Important numbers and the 193RJ app' }
   },
@@ -231,6 +243,9 @@ en: {
     gear: { title: 'Use protective accessories', text: 'Wear a hat, cap, sunglasses and UV-protective clothing.' }
   },
   kids: {
+    suggestTitle: 'Suggestion: identification wristband',
+    suggestText: 'We suggest that children wear a wristband with the name and phone number of the responsible adult and a reference point. A simple action that makes identification easier and allows quick contact with the parent or guardian.',
+    notProvided: 'The Fire Department does not provide identification wristbands; it only recommends using one.',
     wristTitle: 'Identification wristband',
     wristText: 'A simple action that makes identification easier and allows quick contact with the parent or guardian.',
     wristFields: ['Responsible person', 'Contact phone', 'Location / reference'],
@@ -277,9 +292,11 @@ de: {
     share: 'Teilen'
   },
   menu: {
+    drowning: { title: "Ertrinkungsprävention", sub: "Warnflaggen und Rippströmungen", cta: "Mehr erfahren" },
+    call193: { title: "Notfall? Rufen Sie 193 an", sub: "Feuerwehr · zum Anrufen tippen" },
     flags: { title: 'Warnflaggen', sub: 'Was jede Farbe bedeutet' },
     rip: { title: 'Rippströmungen', sub: 'Erkennen und entkommen' },
-    health: { title: 'Gesundheit und Wohlbefinden', sub: 'Vorsicht bei Hitze' },
+    health: { title: "Gesundheitsvorsorge", sub: 'Vorsicht bei Hitze' },
     kids: { title: 'Kindersicherheit', sub: 'Identifikationsarmband und Tipps' },
     emergency: { title: 'Notfall', sub: 'Wichtige Nummern und App 193RJ' }
   },
@@ -310,6 +327,9 @@ de: {
     gear: { title: 'Schutzzubehör verwenden', text: 'Tragen Sie Hut, Kappe, Sonnenbrille und Kleidung mit UV-Schutz.' }
   },
   kids: {
+    suggestTitle: "Empfehlung: Identifikationsarmband",
+    suggestText: "Wir empfehlen, dass Kinder ein Armband mit Name und Telefonnummer der verantwortlichen Person und einem Orientierungspunkt tragen. Eine einfache Maßnahme, die die Identifizierung erleichtert und den schnellen Kontakt ermöglicht.",
+    notProvided: "Die Feuerwehr stellt das Identifikationsarmband nicht zur Verfügung: Sie empfiehlt lediglich seine Verwendung.",
     wristTitle: 'Identifikationsarmband',
     wristText: 'Eine einfache Maßnahme, die die Identifizierung erleichtert und den schnellen Kontakt zur verantwortlichen Person ermöglicht.',
     wristFields: ['Name der verantwortlichen Person', 'Telefonnummer', 'Standort / Orientierungspunkt'],
@@ -356,9 +376,11 @@ fr: {
     share: 'Partager'
   },
   menu: {
+    drowning: { title: "Prévention des noyades", sub: "Drapeaux de signalisation et courants d'arrachement", cta: "En savoir plus" },
+    call193: { title: "Urgence ? Appelez le 193", sub: "Pompiers · touchez pour appeler" },
     flags: { title: 'Drapeaux de signalisation', sub: 'Ce que signifie chaque couleur' },
     rip: { title: 'Courants d\'arrachement', sub: 'Les reconnaître et s\'en sortir' },
-    health: { title: 'Santé et bien-être', sub: 'Précautions par forte chaleur' },
+    health: { title: "Prendre soin de sa santé", sub: 'Précautions par forte chaleur' },
     kids: { title: 'Sécurité des enfants', sub: 'Bracelet d\'identification et conseils' },
     emergency: { title: 'Urgence', sub: 'Numéros importants et app 193RJ' }
   },
@@ -389,6 +411,9 @@ fr: {
     gear: { title: 'Utilisez des accessoires de protection', text: 'Portez un chapeau, une casquette, des lunettes de soleil et des vêtements anti-UV.' }
   },
   kids: {
+    suggestTitle: "Suggestion : bracelet d'identification",
+    suggestText: "Nous suggérons que l'enfant porte un bracelet avec le nom et le téléphone du responsable et un point de repère. Un geste simple qui facilite l'identification et le contact rapide avec le responsable.",
+    notProvided: "Les sapeurs-pompiers ne fournissent pas le bracelet d'identification : ils en recommandent seulement l'usage.",
     wristTitle: 'Bracelet d\'identification',
     wristText: 'Un geste simple qui facilite l\'identification et le contact rapide avec le responsable.',
     wristFields: ['Nom du responsable', 'Tél. de contact', 'Lieu / point de repère'],
@@ -435,9 +460,11 @@ zh: {
     share: '分享'
   },
   menu: {
+    drowning: { title: "预防溺水", sub: "警示旗帜与离岸流", cta: "了解更多" },
+    call193: { title: "紧急情况？请拨打 193", sub: "消防局 · 点击拨打" },
     flags: { title: '警示旗帜', sub: '每种颜色的含义' },
     rip: { title: '离岸流', sub: '如何识别与脱离' },
-    health: { title: '健康与保健', sub: '炎热环境下的注意事项' },
+    health: { title: "健康护理", sub: '炎热环境下的注意事项' },
     kids: { title: '儿童安全', sub: '识别手环与注意事项' },
     emergency: { title: '紧急情况', sub: '重要电话与 193RJ 应用' }
   },
@@ -468,6 +495,9 @@ zh: {
     gear: { title: '使用防护用品', text: '请佩戴帽子、太阳镜，并穿着防紫外线的衣物。' }
   },
   kids: {
+    suggestTitle: "建议：佩戴识别手环",
+    suggestText: "建议儿童佩戴写有监护人姓名、电话和参照地点的手环。一个简单的举动，便于识别身份并快速联系监护人。",
+    notProvided: "消防局不提供识别手环，仅建议使用。",
     wristTitle: '识别手环',
     wristText: '一个简单的举动，便于识别儿童身份并快速联系监护人。',
     wristFields: ['监护人姓名', '联系电话', '位置 / 参照物'],
@@ -514,9 +544,11 @@ it: {
     share: 'Condividi'
   },
   menu: {
+    drowning: { title: "Prevenzione dell'annegamento", sub: "Bandiere di segnalazione e correnti di risacca", cta: "Scopri di più" },
+    call193: { title: "Emergenza? Chiama il 193", sub: "Vigili del Fuoco · tocca per chiamare" },
     flags: { title: 'Bandiere di segnalazione', sub: 'Cosa significa ogni colore' },
     rip: { title: 'Correnti di risacca', sub: 'Come riconoscerle e come uscirne' },
-    health: { title: 'Salute e benessere', sub: 'Attenzioni in ambienti caldi' },
+    health: { title: "Cura della salute", sub: 'Attenzioni in ambienti caldi' },
     kids: { title: 'Sicurezza dei bambini', sub: 'Braccialetto identificativo e consigli' },
     emergency: { title: 'Emergenza', sub: 'Numeri importanti e app 193RJ' }
   },
@@ -547,6 +579,9 @@ it: {
     gear: { title: 'Usa accessori protettivi', text: 'Indossa cappello, berretto, occhiali da sole e abiti con protezione UV.' }
   },
   kids: {
+    suggestTitle: "Suggerimento: braccialetto identificativo",
+    suggestText: "Suggeriamo che il bambino indossi un braccialetto con il nome e il telefono del responsabile e un punto di riferimento. Un gesto semplice che facilita l'identificazione e il contatto rapido con il responsabile.",
+    notProvided: "I Vigili del Fuoco non forniscono il braccialetto identificativo: ne suggeriscono soltanto l'uso.",
     wristTitle: 'Braccialetto identificativo',
     wristText: 'Un gesto semplice che facilita l\'identificazione e il contatto rapido con il responsabile.',
     wristFields: ['Nome del responsabile', 'Tel. di contatto', 'Posizione / punto di riferimento'],
@@ -593,9 +628,11 @@ ja: {
     share: '共有'
   },
   menu: {
+    drowning: { title: "水難事故の防止", sub: "警告旗と離岸流", cta: "詳しく見る" },
+    call193: { title: "緊急時は 193 へ", sub: "消防 · タップして電話" },
     flags: { title: '警告旗', sub: '色の意味' },
     rip: { title: '離岸流', sub: '見分け方と脱出方法' },
-    health: { title: '健康と体調管理', sub: '暑い環境での注意' },
+    health: { title: "健康管理", sub: '暑い環境での注意' },
     kids: { title: '子どもの安全', sub: '迷子防止リストバンドと注意点' },
     emergency: { title: '緊急時', sub: '重要な電話番号と 193RJ アプリ' }
   },
@@ -626,6 +663,9 @@ ja: {
     gear: { title: '保護用品を使いましょう', text: '帽子、サングラス、UV カット素材の衣類を着用してください。' }
   },
   kids: {
+    suggestTitle: "おすすめ：迷子防止リストバンド",
+    suggestText: "保護者の名前と電話番号、目印を書いたリストバンドをお子さまに着けることをおすすめします。身元確認と保護者への迅速な連絡に役立つ簡単な対策です。",
+    notProvided: "消防隊はリストバンドを配布していません。使用をおすすめしているだけです。",
     wristTitle: '迷子防止リストバンド',
     wristText: '身元確認と保護者への迅速な連絡を可能にする、簡単な対策です。',
     wristFields: ['保護者の名前', '連絡先電話番号', '場所 / 目印'],
@@ -672,9 +712,11 @@ ar: {
     share: 'مشاركة'
   },
   menu: {
+    drowning: { title: "الوقاية من الغرق", sub: "أعلام التحذير والتيارات الساحبة", cta: "اعرف المزيد" },
+    call193: { title: "طوارئ؟ اتصل بالرقم 193", sub: "الإطفاء · اضغط للاتصال" },
     flags: { title: 'أعلام التحذير', sub: 'ماذا يعني كل لون' },
     rip: { title: 'التيارات الساحبة', sub: 'كيف تتعرف عليها وكيف تنجو منها' },
-    health: { title: 'الصحة والعافية', sub: 'احتياطات في الأجواء الحارة' },
+    health: { title: "العناية بالصحة", sub: 'احتياطات في الأجواء الحارة' },
     kids: { title: 'سلامة الأطفال', sub: 'سوار التعريف ونصائح' },
     emergency: { title: 'الطوارئ', sub: 'أرقام مهمة وتطبيق 193RJ' }
   },
@@ -705,6 +747,9 @@ ar: {
     gear: { title: 'استخدم أدوات الحماية', text: 'ارتدِ قبعة ونظارات شمسية وملابس واقية من الأشعة فوق البنفسجية.' }
   },
   kids: {
+    suggestTitle: "اقتراح: سوار التعريف",
+    suggestText: "نقترح أن يرتدي الطفل سواراً يحمل اسم ولي الأمر ورقم هاتفه ونقطة مرجعية. إجراء بسيط يسهّل التعرف على الطفل والتواصل السريع مع ولي الأمر.",
+    notProvided: "هيئة الإطفاء لا توفّر سوار التعريف، بل تقترح استخدامه فقط.",
     wristTitle: 'سوار التعريف',
     wristText: 'إجراء بسيط يسهّل التعرف على الطفل والتواصل السريع مع ولي الأمر.',
     wristFields: ['اسم ولي الأمر', 'هاتف للتواصل', 'الموقع / نقطة مرجعية'],
@@ -751,9 +796,11 @@ ru: {
     share: 'Поделиться'
   },
   menu: {
+    drowning: { title: "Профилактика утоплений", sub: "Сигнальные флаги и отбойные течения", cta: "Подробнее" },
+    call193: { title: "Экстренная ситуация? Звоните 193", sub: "Пожарная служба · нажмите, чтобы позвонить" },
     flags: { title: 'Сигнальные флаги', sub: 'Что означает каждый цвет' },
     rip: { title: 'Отбойные течения', sub: 'Как распознать и как выбраться' },
-    health: { title: 'Здоровье и самочувствие', sub: 'Меры предосторожности в жару' },
+    health: { title: "Забота о здоровье", sub: 'Меры предосторожности в жару' },
     kids: { title: 'Безопасность детей', sub: 'Идентификационный браслет и советы' },
     emergency: { title: 'Экстренная помощь', sub: 'Важные номера и приложение 193RJ' }
   },
@@ -784,6 +831,9 @@ ru: {
     gear: { title: 'Используйте защитные аксессуары', text: 'Носите шляпу, кепку, солнцезащитные очки и одежду с УФ-защитой.' }
   },
   kids: {
+    suggestTitle: "Рекомендация: идентификационный браслет",
+    suggestText: "Рекомендуем, чтобы ребёнок носил браслет с именем и телефоном ответственного лица и ориентиром. Простая мера, которая облегчает идентификацию и быструю связь с ответственным.",
+    notProvided: "Пожарная служба не выдаёт идентификационные браслеты: она лишь рекомендует их использовать.",
     wristTitle: 'Идентификационный браслет',
     wristText: 'Простое действие, которое облегчает идентификацию и позволяет быстро связаться с ответственным лицом.',
     wristFields: ['Имя ответственного', 'Контактный телефон', 'Местоположение / ориентир'],
@@ -830,9 +880,11 @@ hi: {
     share: 'साझा करें'
   },
   menu: {
+    drowning: { title: "डूबने से बचाव", sub: "चेतावनी झंडे और रिप करंट", cta: "और जानें" },
+    call193: { title: "आपातकाल? 193 पर कॉल करें", sub: "अग्निशमन विभाग · कॉल करने के लिए टैप करें" },
     flags: { title: 'चेतावनी झंडे', sub: 'हर रंग का क्या मतलब है' },
     rip: { title: 'रिप करंट (खिंचाव धाराएँ)', sub: 'कैसे पहचानें और कैसे बचें' },
-    health: { title: 'स्वास्थ्य और सेहत', sub: 'गर्म मौसम में सावधानियाँ' },
+    health: { title: "स्वास्थ्य की देखभाल", sub: 'गर्म मौसम में सावधानियाँ' },
     kids: { title: 'बच्चों की सुरक्षा', sub: 'पहचान बैंड और सुझाव' },
     emergency: { title: 'आपातकाल', sub: 'ज़रूरी नंबर और 193RJ ऐप' }
   },
@@ -863,6 +915,9 @@ hi: {
     gear: { title: 'सुरक्षा सामान का उपयोग करें', text: 'टोपी, धूप का चश्मा और UV-सुरक्षा वाले कपड़े पहनें।' }
   },
   kids: {
+    suggestTitle: "सुझाव: पहचान बैंड",
+    suggestText: "हमारा सुझाव है कि बच्चा अभिभावक के नाम, फ़ोन नंबर और एक पहचान चिह्न वाला बैंड पहने। एक सरल उपाय जो पहचान आसान बनाता है और अभिभावक से तुरंत संपर्क संभव करता है।",
+    notProvided: "अग्निशमन विभाग पहचान बैंड नहीं देता: केवल इसके उपयोग का सुझाव देता है।",
     wristTitle: 'पहचान बैंड',
     wristText: 'एक सरल उपाय जो पहचान को आसान बनाता है और अभिभावक से तुरंत संपर्क संभव करता है।',
     wristFields: ['अभिभावक का नाम', 'संपर्क फ़ोन', 'स्थान / पहचान चिह्न'],
@@ -909,9 +964,11 @@ ko: {
     share: '공유'
   },
   menu: {
+    drowning: { title: "익사 예방", sub: "경고 깃발과 이안류", cta: "자세히 보기" },
+    call193: { title: "긴급 상황? 193에 전화하세요", sub: "소방대 · 탭하여 전화하기" },
     flags: { title: '경고 깃발', sub: '색깔별 의미' },
     rip: { title: '이안류', sub: '알아보는 법과 벗어나는 법' },
-    health: { title: '건강과 웰빙', sub: '더운 환경에서의 주의사항' },
+    health: { title: "건강 관리", sub: '더운 환경에서의 주의사항' },
     kids: { title: '어린이 안전', sub: '신원 확인 팔찌와 주의사항' },
     emergency: { title: '긴급 상황', sub: '주요 전화번호와 193RJ 앱' }
   },
@@ -942,6 +999,9 @@ ko: {
     gear: { title: '보호 용품을 사용하세요', text: '모자, 선글라스, 자외선 차단 의류를 착용하세요.' }
   },
   kids: {
+    suggestTitle: "제안: 신원 확인 팔찌",
+    suggestText: "어린이에게 보호자의 이름과 전화번호, 기준점을 적은 팔찌를 착용하게 할 것을 권장합니다. 신원 확인과 보호자와의 빠른 연락을 돕는 간단한 방법입니다.",
+    notProvided: "소방대는 신원 확인 팔찌를 제공하지 않으며, 사용을 권장할 뿐입니다.",
     wristTitle: '신원 확인 팔찌',
     wristText: '신원 확인과 보호자와의 빠른 연락을 돕는 간단한 방법입니다.',
     wristFields: ['보호자 이름', '연락처', '위치 / 기준점'],
