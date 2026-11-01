@@ -381,3 +381,8 @@ h1, h2, h3, .title { letter-spacing: 0; }
 .footer b { font-family: var(--font-head); font-weight: 900; }
 .sos { background: var(--red-700); border-color: #fff; }
 .libras-bar, .libras-bar button { font-family: var(--font-head); font-weight: 800; }
+
+/* lista de idiomas: bandeira + idioma + país (em português) */
+.lang-grid.others .lang-btn { align-items: center; }
+.lname { display: flex; flex-direction: column; line-height: 1.1; }
+.lname small { font-family: var(--font-body); text-transform: none; font-weight: 500; font-size: 12px; opacity: .85; margin-top: 2px; letter-spacing: 0; }

@@ -101,7 +101,7 @@
     const pt = window.LANGS.find(l => l.code === 'pt');
     const en = window.LANGS.find(l => l.code === 'en');
     const others = window.LANGS.filter(l => l.code !== 'pt' && l.code !== 'en');
-    const btn = l => `<button class="lang-btn" data-lang="${l.code}" lang="${l.code}"><span class="flag">${l.flag}</span>${esc(l.name)}</button>`;
+    const btn = l => `<button class="lang-btn" data-lang="${l.code}" lang="${l.code}"><span class="flag">${l.flag}</span><span class="lname">${esc(l.name)}<small lang="pt">${esc(l.country || '')}</small></span></button>`;
     return `
       <section class="hero">
         <div class="cb-head">
@@ -117,9 +117,9 @@
             <button class="libras-pill" data-lang="libras" lang="pt"><span>🤟</span>Libras</button>
           </div>
           <button class="lang-btn wide en-main" data-lang="en" lang="en"><span class="flag">${en.flag}</span>${esc(en.name)}</button>
-          <button class="lang-btn wide more choose-btn" id="more-langs" aria-expanded="false" lang="en">
+          <button class="lang-btn wide more choose-btn" id="more-langs" aria-expanded="false" lang="pt">
             <span class="flag">🌐</span>
-            <span>Choose your language ▾<small>${others.slice(0, 4).map(l => esc(l.name)).join(' · ')} · +${others.length - 4}</small></span>
+            <span>Escolha o seu idioma ▾<small>Mais ${others.length} idiomas</small></span>
           </button>
         </div>
         <div class="lang-grid others" id="others" hidden>${others.map(btn).join('')}</div>

@@ -2,18 +2,18 @@
    PT, ES e EN seguem exatamente as telas aprovadas pelo CBMERJ.
    Os demais idiomas foram traduzidos a partir delas. */
 window.LANGS = [
-  { code: 'pt', name: 'Português', flag: '🇧🇷', main: true },
-  { code: 'es', name: 'Español', flag: '🇪🇸', main: true },
-  { code: 'en', name: 'English', flag: '🇬🇧', main: true },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪', main: true },
-  { code: 'fr', name: 'Français', flag: '🇫🇷', main: true },
-  { code: 'zh', name: '中文', flag: '🇨🇳', main: true },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'ja', name: '日本語', flag: '🇯🇵' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦', rtl: true },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
-  { code: 'ko', name: '한국어', flag: '🇰🇷' }
+  { code: 'pt', name: 'Português', flag: '🇧🇷', country: 'Brasil', main: true },
+  { code: 'es', name: 'Español', flag: '🇪🇸', country: 'Espanha', main: true },
+  { code: 'en', name: 'English', flag: '🇬🇧', country: 'Reino Unido', main: true },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪', country: 'Alemanha', main: true },
+  { code: 'fr', name: 'Français', flag: '🇫🇷', country: 'França', main: true },
+  { code: 'zh', name: '中文', flag: '🇨🇳', country: 'China', main: true },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹', country: 'Itália' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵', country: 'Japão' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦', country: 'Arábia Saudita', rtl: true },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺', country: 'Rússia' },
+  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳', country: 'Índia' },
+  { code: 'ko', name: '한국어', flag: '🇰🇷', country: 'Coreia do Sul' }
 ];
 
 window.I18N = {
