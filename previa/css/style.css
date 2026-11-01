@@ -298,3 +298,86 @@ body.libras-on .app { padding-top: calc(60px + env(safe-area-inset-top)); }
   position: sticky; top: 0; z-index: 2147483646; background: #f5c518; color: #1a0a0a; text-align: center;
   font: 700 12px/1 var(--font-body); letter-spacing: .06em; padding: 7px 8px;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   NOVA IDENTIDADE (01/11/2026) – padrão do banner "Aproveite a praia
+   com segurança": vermelho vivo, moldura branca, branco + amarelo,
+   Montserrat, logo RIO com o brasão do CBMERJ no "O".
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --red-900: #8e0d12; --red-800: #a51218; --red-700: #c8161d; --red-600: #d81f26; --red-500: #e3262d;
+  --gold: #ffcd1c;
+  --font-head: 'Montserrat', 'Arial Black', Arial, sans-serif;
+}
+body { background: radial-gradient(ellipse at 50% 18%, #df2a2f 0%, #c8161d 55%, #a51218 100%) fixed; }
+.frame { position: fixed; inset: 8px; border: 3px solid rgba(255,255,255,.95); border-radius: 22px; pointer-events: none; z-index: 0; }
+.app { padding-left: 20px; padding-right: 20px; }
+@media (min-width: 720px) { .app { background: transparent; box-shadow: none; } }
+
+h1, h2, h3, .title { letter-spacing: 0; }
+.title { font-weight: 900; font-size: clamp(22px, 6.2vw, 28px); line-height: 1.1; color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.title small { color: var(--gold); font-weight: 800; }
+.title::after { content: ''; display: block; width: 72%; height: 2px; background: #fff; margin: 10px auto 0; opacity: .9; }
+
+/* cabeçalho das telas internas */
+.screen-head { grid-template-columns: 44px 1fr 44px; margin-bottom: 4px; }
+.cb-mini { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.cb-mini img { width: 54px; height: 54px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.35)); }
+.cb-mini span { font-family: var(--font-head); font-weight: 800; font-size: 10px; line-height: 1.05; color: #fff; text-align: left; letter-spacing: .02em; }
+.cb-mini span b { display: block; font-size: 17px; font-weight: 900; letter-spacing: -.01em; }
+.icon-btn { background: rgba(255,255,255,.18); }
+
+/* tela de idiomas no padrão do banner */
+.cb-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 6px auto 4px; }
+.cb-head img { width: 64px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+.cb-head div { display: flex; flex-direction: column; text-align: left; font-family: var(--font-head); color: #fff; line-height: .95; }
+.cb-head .l1 { font-weight: 800; font-size: 17px; }
+.cb-head .l2 { font-weight: 900; font-size: 34px; letter-spacing: -.01em; }
+.cb-head .l3 { font-weight: 800; font-size: 17px; align-self: flex-end; }
+.boia-hero { width: min(72%, 300px); margin: 6px auto 4px; filter: drop-shadow(0 8px 14px rgba(0,0,0,.35)); }
+.lines-title { margin: 6px auto 4px; padding: 10px 0; border-top: 2px solid #fff; border-bottom: 2px solid #fff; max-width: 400px; text-align: center; font-family: var(--font-head); line-height: 1.1; }
+.lines-title span { display: block; color: #fff; font-weight: 900; font-size: clamp(21px, 6vw, 27px); }
+.lines-title b { display: block; color: var(--gold); font-weight: 900; font-size: clamp(19px, 5.4vw, 24px); }
+.tagline-qr { margin: 10px auto 16px; font-size: 14px; font-weight: 600; color: #fff; opacity: .95; }
+
+/* botões de idioma: branco sobre vermelho */
+.lang-btn { background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.9); font-family: var(--font-head); font-weight: 800; font-size: 17px; }
+.pt-card { background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.9); }
+.pt-card .pt-main { font-size: 19px; }
+.en-main { font-size: 19px; }
+.libras-pill { font-family: var(--font-head); font-weight: 800; font-size: 14px; }
+.choose-btn { border-style: dashed; background: rgba(0,0,0,.12); }
+.choose-btn small { font-family: var(--font-body); font-weight: 500; }
+.lang-grid.others .lang-btn { font-size: 15px; }
+
+/* menu */
+.hero-tile { background: #fff; color: var(--red-700); border: 0; grid-template-columns: 104px 1fr; box-shadow: 0 10px 24px rgba(0,0,0,.28); }
+.hero-tile::after { display: none; }
+.hero-tile img { width: 104px; }
+.hero-txt b { color: var(--red-700); text-shadow: none; font-weight: 900; font-size: clamp(22px, 6.4vw, 28px); line-height: 1.05; }
+.hero-txt span { color: #444; }
+.hero-cta { background: var(--red-700); color: #fff; font-weight: 800; font-size: 13px; }
+.tile { border: 0; background: #fff !important; color: var(--red-700); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+.tile .tile-ico { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; }
+.tile.orange .tile-ico { background: #f18a1c; }
+.tile.purple .tile-ico { background: #7b2fb8; }
+.tile-ico svg { width: 42px; height: 42px; }
+.tile b { font-weight: 900; font-size: 16px; color: #1a1a1a; }
+.call193 { background: var(--gold); border: 0; color: #1a1a1a; box-shadow: 0 8px 20px rgba(0,0,0,.28); }
+.call-ico { background: var(--red-700); }
+.call-num { color: var(--red-800); font-weight: 900; }
+.call-txt b { color: #1a1a1a; font-weight: 900; font-size: 16px; }
+.call-txt span { color: #333; }
+
+/* painéis: fundo escuro translúcido com borda branca, como as faixas do banner */
+.panel { background: rgba(70,0,0,.28); border: 2px solid rgba(255,255,255,.85); }
+.panel-title { background: var(--gold); font-weight: 900; }
+.attention { background: rgba(0,0,0,.25); border-color: var(--gold); }
+.flag-row h3 { color: var(--gold); font-weight: 800; font-size: 14px; }
+.chips a { font-weight: 800; font-size: 14px; background: #fff; color: var(--red-700); }
+.sec-title { color: #fff; font-weight: 900; font-size: 20px; }
+.notice { background: #fff; color: #1a1a1a; border-color: var(--gold); }
+.slogan { background: var(--gold); font-weight: 900; font-size: 15px; }
+.footer b { font-family: var(--font-head); font-weight: 900; }
+.sos { background: var(--red-700); border-color: #fff; }
+.libras-bar, .libras-bar button { font-family: var(--font-head); font-weight: 800; }

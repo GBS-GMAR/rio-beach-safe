@@ -81,7 +81,7 @@
     return `
       <header class="screen-head">
         <button class="icon-btn" data-go="${opts.back || 'menu'}" aria-label="${esc(u.back)}">${ICONS.back}</button>
-        <img class="logo-sm" src="assets/img/logo-projeto-rio-beach-safe.webp" alt="Projeto Rio Beach Safe">
+        <div class="cb-mini"><img src="assets/img/boia-rio-beach-safe.webp" alt="Rio Beach Safe"><span>CORPO DE<b>BOMBEIROS</b>MILITAR - RJ</span></div>
         <button class="icon-btn lang-chip" data-go="lang" aria-label="${esc(u.changeLang)}" title="${esc(u.changeLang)}">${meta.flag || '🌐'}</button>
       </header>`;
   }
@@ -104,9 +104,13 @@
     const btn = l => `<button class="lang-btn" data-lang="${l.code}" lang="${l.code}"><span class="flag">${l.flag}</span>${esc(l.name)}</button>`;
     return `
       <section class="hero">
-        <img class="logo" src="assets/img/logo-projeto-rio-beach-safe.webp" alt="Projeto Rio Beach Safe">
-        <img class="boia" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="">
-        <p class="tagline">${esc(u.tagline)}</p>
+        <div class="cb-head">
+          <img src="assets/img/brasao-cbmerj.webp" alt="Brasão do CBMERJ">
+          <div><span class="l1">CORPO DE</span><span class="l2">BOMBEIROS</span><span class="l3">MILITAR - RJ</span></div>
+        </div>
+        <img class="boia-hero" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="Rio Beach Safe – Corpo de Bombeiros Militar do Estado do Rio de Janeiro">
+        <div class="lines-title"><span>APROVEITE A PRAIA</span><b>COM SEGURANÇA</b></div>
+        <p class="tagline-qr">Acesso rápido às orientações de segurança na praia</p>
         <div class="lang-grid">
           <div class="pt-card">
             <button class="lang-btn pt-main" data-lang="pt" lang="pt"><span class="flag">${pt.flag}</span>${esc(pt.name)}</button>
