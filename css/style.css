@@ -386,3 +386,8 @@ h1, h2, h3, .title { letter-spacing: 0; }
 .lang-grid.others .lang-btn { align-items: center; }
 .lname { display: flex; flex-direction: column; line-height: 1.1; }
 .lname small { font-family: var(--font-body); text-transform: none; font-weight: 500; font-size: 12px; opacity: .85; margin-top: 2px; letter-spacing: 0; }
+
+/* palavras longas (alemão, russo...) quebram com hífen em vez de estourar o quadro */
+.hero-tile, .hero-txt, .tile-grid > *, .tile, .menu-item .txt, .title, .panel { min-width: 0; }
+.hero-txt b, .tile b, .title, .panel-title, .call-txt b, .sec-title, .lines-title { overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
+.tile-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
