@@ -1,8 +1,8 @@
 /* Service worker – deixa o app disponível offline após o primeiro acesso.
    Ao publicar uma nova versão, mude o número de CACHE abaixo. */
-const CACHE = 'rio-beach-safe-v7';
+const CACHE = 'rio-beach-safe-v8';
 const ASSETS = [
-  './', 'index.html', 'css/style.css', 'js/app.js', 'js/i18n.js', 'manifest.webmanifest',
+  './', 'index.html', 'css/style.css?v=3.2', 'js/app.js?v=3.2', 'js/i18n.js?v=3.2', 'manifest.webmanifest',
   'assets/img/logo-projeto-rio-beach-safe.webp', 'assets/img/boia-rio-beach-safe-guarda-vidas.webp',
   'assets/img/boia-rio-beach-safe.webp', 'assets/img/brasao-cbmerj.webp',
   'assets/img/bandeira-vermelha.webp', 'assets/img/bandeira-amarela.webp', 'assets/img/bandeira-verde.webp', 'assets/img/bandeira-roxa.webp',
@@ -22,7 +22,8 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return; // fontes, VLibras: direto da rede
   // HTML/JS/CSS: rede primeiro (pega atualizações), cache como reserva
   if (e.request.mode === 'navigate' || /\.(js|css|html)$/.test(url.pathname) || url.pathname.endsWith('/')) {
-    e.respondWith(fetch(e.request).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return r; }).catch(() => caches.match(e.request).then(r => r || caches.match('./'))));
+    // cache: 'no-cache' = sempre confere no servidor se há versão nova (evita mostrar a versão antiga após uma publicação)
+    e.respondWith(fetch(e.request, { cache: 'no-cache' }).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return r; }).catch(() => caches.match(e.request).then(r => r || caches.match('./'))));
     return;
   }
   // Imagens: cache primeiro

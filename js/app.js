@@ -381,6 +381,13 @@
     tag.textContent = 'PRÉVIA PARA APROVAÇÃO · não é a versão oficial'; document.body.prepend(tag);
   }
   if (!PREVIEW && 'serviceWorker' in navigator && location.protocol === 'https:') {
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    // Quando uma versão nova é publicada, o service worker novo assume e a página recarrega uma vez sozinha.
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (hadController && !reloaded) { reloaded = true; location.reload(); }
+    });
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+      .then(reg => reg.update()).catch(() => {}));
   }
 })();
