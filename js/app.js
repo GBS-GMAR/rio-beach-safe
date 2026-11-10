@@ -106,7 +106,8 @@
       <section class="hero">
         <div class="cb-head">
           <img src="assets/img/brasao-cbmerj.webp" alt="Brasão do CBMERJ">
-          <div><span class="l1">CORPO DE</span><span class="l2">BOMBEIROS</span><span class="l3">MILITAR - RJ</span></div>
+          <div class="cb-txt"><span class="l1">CORPO DE</span><span class="l2">BOMBEIROS</span></div>
+          <div class="l3">MILITAR - RJ</div>
         </div>
         <img class="boia-hero" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="Rio Beach Safe – Corpo de Bombeiros Militar do Estado do Rio de Janeiro">
         <div class="lines-title"><span>APROVEITE A PRAIA</span><b>COM SEGURANÇA</b></div>
@@ -117,9 +118,9 @@
             <button class="libras-pill" data-lang="libras" lang="pt"><span>🤟</span>Libras</button>
           </div>
           <button class="lang-btn wide en-main" data-lang="en" lang="en"><span class="flag">${en.flag}</span>${esc(en.name)}</button>
-          <button class="lang-btn wide more choose-btn" id="more-langs" aria-expanded="false" lang="pt">
+          <button class="lang-btn wide more choose-btn" id="more-langs" aria-expanded="false" lang="en">
             <span class="flag">🌐</span>
-            <span>Escolha o seu idioma ▾<small>Mais ${others.length} idiomas</small></span>
+            <span>Choose your language ▾<small lang="pt">Escolha o seu idioma · mais ${others.length} idiomas</small></span>
           </button>
         </div>
         <div class="lang-grid others" id="others" hidden>${others.map(btn).join('')}</div>

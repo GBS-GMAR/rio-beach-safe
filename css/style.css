@@ -391,3 +391,13 @@ h1, h2, h3, .title { letter-spacing: 0; }
 .hero-tile, .hero-txt, .tile-grid > *, .tile, .menu-item .txt, .title, .panel { min-width: 0; }
 .hero-txt b, .tile b, .title, .panel-title, .call-txt b, .sec-title, .lines-title { overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; }
 .tile-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+/* Cabeçalho igual ao banner: linha à direita de "CORPO DE" e linha que separa
+   "BOMBEIROS" de "MILITAR - RJ" (V3.2, 10/11/2026) */
+.cb-head { display: grid; grid-template-columns: auto auto; align-items: center; justify-content: center; column-gap: 12px; row-gap: 0; }
+.cb-head img { grid-row: 1; align-self: center; }
+.cb-head .cb-txt { display: flex; flex-direction: column; text-align: left; font-family: var(--font-head); color: #fff; line-height: .95; }
+.cb-head .l1 { display: flex; align-items: center; gap: 8px; }
+.cb-head .l1::after { content: ''; flex: 1; height: 2px; background: #fff; border-radius: 1px; }
+.cb-head .l3 { grid-column: 1 / -1; display: flex; flex-direction: row; justify-content: flex-end; align-items: center; text-align: right; gap: 8px; font-family: var(--font-head); font-weight: 800; font-size: 17px; color: #fff; line-height: 1; margin-top: 2px; }
+.cb-head .l3::before { content: ''; flex: 1; height: 2px; background: #fff; border-radius: 1px; }
