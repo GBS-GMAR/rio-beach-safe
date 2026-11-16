@@ -110,7 +110,7 @@
           <div class="l3">MILITAR - RJ</div>
         </div>
         <img class="boia-hero" src="assets/img/boia-rio-beach-safe-guarda-vidas.webp" alt="Rio Beach Safe – Corpo de Bombeiros Militar do Estado do Rio de Janeiro">
-        <div class="lines-title"><span>APROVEITE A PRAIA</span><b>COM SEGURANÇA</b></div>
+        <div class="lines-title"><span>APROVEITE A PRAIA</span><b>COM SEGURANÇA</b><i lang="en">Enjoy the beach safely</i></div>
         <p class="tagline-qr">Acesso rápido às orientações de segurança na praia</p>
         <div class="lang-grid">
           <div class="pt-card">

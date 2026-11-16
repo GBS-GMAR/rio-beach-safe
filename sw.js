@@ -1,8 +1,8 @@
 /* Service worker – deixa o app disponível offline após o primeiro acesso.
    Ao publicar uma nova versão, mude o número de CACHE abaixo. */
-const CACHE = 'rio-beach-safe-v8';
+const CACHE = 'rio-beach-safe-v9';
 const ASSETS = [
-  './', 'index.html', 'css/style.css?v=3.2', 'js/app.js?v=3.2', 'js/i18n.js?v=3.2', 'manifest.webmanifest',
+  './', 'index.html', 'css/style.css?v=3.3', 'js/app.js?v=3.3', 'js/i18n.js?v=3.3', 'manifest.webmanifest',
   'assets/img/logo-projeto-rio-beach-safe.webp', 'assets/img/boia-rio-beach-safe-guarda-vidas.webp',
   'assets/img/boia-rio-beach-safe.webp', 'assets/img/brasao-cbmerj.webp',
   'assets/img/bandeira-vermelha.webp', 'assets/img/bandeira-amarela.webp', 'assets/img/bandeira-verde.webp', 'assets/img/bandeira-roxa.webp',
